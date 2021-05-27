@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEncuestasTable extends Migration
+class CreateMenuReservaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateEncuestasTable extends Migration
      */
     public function up()
     {
-        Schema::create('encuestas', function (Blueprint $table) {
+        Schema::create('menu_reserva', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            //relacion uno a uno con reservas
+            /* relacion muchos a muchos de menu y reserva */
+            $table->unsignedBigInteger('menu_id');
+            $table->foreign('menu_id')->references('id')->on('menus');
             $table->unsignedBigInteger('reserva_id');
             $table->foreign('reserva_id')->references('id')->on('reservas');
+
+            $table->timestamps();
         });
     }
 
@@ -29,6 +32,6 @@ class CreateEncuestasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('encuestas');
+        Schema::dropIfExists('menu_reserva');
     }
 }
