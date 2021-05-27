@@ -17,7 +17,7 @@ class CreateReservasTable extends Migration
             $table->id();
             $table->timestamps('hora');
             $table->timestamps('fecha');
-            $table->timestamps();
+            
             
             /* relacion uno a muchos con estados */
             $table->unsignedBigInteger('estado_id');
@@ -30,6 +30,10 @@ class CreateReservasTable extends Migration
             /* relacion uno a muchos con usuarios */
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+
+            /* relacion uno a muchos con turnos */
+            $table->unsignedBigInteger('turno_id');
+            $table->foreign('turno_id')->references('id')->on('turnos');
 
             
         });

@@ -9,6 +9,7 @@ use App\Models\Estado;
 use App\Models\Mesa;
 use App\Models\User;
 use App\Models\Menu;
+use App\Models\Turno;
 class Reserva extends Model
 {
     use HasFactory;
@@ -41,5 +42,9 @@ class Reserva extends Model
         return $this->belongsToMany(Menu::class);
     }
 
+    /* relacion uno a muchos de estado con turno (inversa) */
+    public function Turno(){
+    return $this->belongsTo(Turno::class)
+    }
 
 }
