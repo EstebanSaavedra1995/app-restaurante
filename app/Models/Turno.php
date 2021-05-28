@@ -14,5 +14,4 @@ class Turno extends Model
     public function Reservas(){
         return $this->hasMany(Reserva::class);
     }
-    return "jhfsdhjfkjs";
 }

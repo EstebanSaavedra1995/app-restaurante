@@ -46,5 +46,10 @@ class User extends Authenticatable
         return $this->hasMany(Reserva::class);
     }
 
+    /* Relacion 1 a muchos entre usuario y sancion */
+    public function Sancions(){
+        return $this->hasMany(Sancion::class);
+    }
+
     
 }
