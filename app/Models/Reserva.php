@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Encuesta;
-use App\Models\Estado;
 use App\Models\Mesa;
 use App\Models\User;
 use App\Models\Menu;
@@ -23,11 +22,7 @@ class Reserva extends Model
     }
 
 
-    /* relacion uno a muchos de estado con reserva (inversa) */
-    public function Estado(){
-        return $this->belongsTo(Estado::class);
-    }
-
+   
     /* relacion 1  a muchos de mesa con reserva (inversa) */
     public function Mesa(){
         return $this->belongsTo(Mesa::class);

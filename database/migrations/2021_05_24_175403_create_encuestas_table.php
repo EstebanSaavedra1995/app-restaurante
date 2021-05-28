@@ -15,6 +15,9 @@ class CreateEncuestasTable extends Migration
     {
         Schema::create('encuestas', function (Blueprint $table) {
             $table->id();
+            $table->float('atencion');
+            $table->float('comida');
+            $table->float('bebida');
             $table->timestamps();
             //relacion uno a uno con reservas
             $table->unsignedBigInteger('reserva_id');

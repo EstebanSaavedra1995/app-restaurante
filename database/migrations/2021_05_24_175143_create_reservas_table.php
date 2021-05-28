@@ -15,13 +15,11 @@ class CreateReservasTable extends Migration
     {
         Schema::create('reservas', function (Blueprint $table) {
             $table->id();
-            $table->timestamps('hora');
-            $table->timestamps('fecha');
-            
-            
-            /* relacion uno a muchos con estados */
-            $table->unsignedBigInteger('estado_id');
-            $table->foreign('estado_id')->references('id')->on('estados');
+            $table->float('total');
+            $table->enum('estado', ['pendiente','confirmada','cancelada','perdida'])
+                 ->default('pendiente');
+            $table->timestamps();
+
 
             /* relacion uno a muchos con mesas */
             $table->unsignedBigInteger('mesa_id');
