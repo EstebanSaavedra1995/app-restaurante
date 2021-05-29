@@ -16,10 +16,10 @@ class CreateSancionsTable extends Migration
         Schema::create('sancions', function (Blueprint $table) {
             $table->id();
             $table->enum('tipo', ['cancelada','perdida']);
-            $table->timestamps('fecha_inicio');
-            $table->timestamps('fecha_fin');
-
+            $table->date('fecha_inicio');
+            $table->date('fecha_fin');
             /* relacion uno a muchos con sancion */
+            $table->timestamps();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
         });
