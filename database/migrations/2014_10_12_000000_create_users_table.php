@@ -22,9 +22,6 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            /* relacion uno a muchos con sancion */
-            $table->unsignedBigInteger('sancion_id');
-            $table->foreign('sancion_id')->references('id')->on('sancions');
         });
     }
 
