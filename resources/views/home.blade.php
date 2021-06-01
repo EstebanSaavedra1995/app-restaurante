@@ -4,6 +4,7 @@
 @section('title', 'Home')
 
 @section('content')
+<a href="{{ route('addReserva') }}">Añadir Reserva</a>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
