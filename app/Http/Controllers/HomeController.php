@@ -18,7 +18,8 @@ class HomeController extends Controller
 
     public function __invoke()
     {
-        return view('home');
+        $nombre='mauri';
+        return view('reservas', compact('nombre'));
     }
 
 }
