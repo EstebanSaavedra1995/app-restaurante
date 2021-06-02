@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+
 Route::get('/', HomeController::class);
-
-Route::get('/reserva',[ReservaController::class, 'addReserva'])->name('addReserva');
-
-Route::post('/reserva',[ReservaController::class, 'alta'])->name('alta');
+/* Rutas para la reserva - create store delete update */
+Route::get('/reserva/create',[ReservaController::class, 'create'])->name('reservas.create');
+Route::post('/reserva',[ReservaController::class, 'store'])->name('reservas.store');
 
 Auth::routes();
 
