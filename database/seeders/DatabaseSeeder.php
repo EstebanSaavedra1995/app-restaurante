@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Menu;
+use App\Models\Mesa;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +15,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        
+        /* Menu::factory(51)->create(); */
+        Mesa::factory(25)->create();
+
     }
 }
