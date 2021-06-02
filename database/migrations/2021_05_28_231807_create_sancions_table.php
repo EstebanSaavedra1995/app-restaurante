@@ -19,9 +19,10 @@ class CreateSancionsTable extends Migration
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
             /* relacion uno a muchos con sancion */
-            $table->timestamps();
+           
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamps();
         });
     }
 
