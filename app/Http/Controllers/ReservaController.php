@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 
 class ReservaController extends Controller
 {
-    public function addReserva()
+    public function create()
     {
-        return view('reservas.nuevaReserva');
+        return view('reservas.create');
 
     }
 
-    public function alta()
+    public function store(Request $request)
     {
-        return "eña";
+      return $request->all();
     }
 }
