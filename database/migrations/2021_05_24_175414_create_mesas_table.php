@@ -15,8 +15,8 @@ class CreateMesasTable extends Migration
     {
         Schema::create('mesas', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->enum('capacidad', [2,4]);
+            $table->timestamps();
         });
     }
 

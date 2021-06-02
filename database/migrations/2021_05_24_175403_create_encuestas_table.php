@@ -18,10 +18,11 @@ class CreateEncuestasTable extends Migration
             $table->float('atencion');
             $table->float('comida');
             $table->float('bebida');
-            $table->timestamps();
+            
             //relacion uno a uno con reservas
             $table->unsignedBigInteger('reserva_id');
             $table->foreign('reserva_id')->references('id')->on('reservas');
+            $table->timestamps();
         });
     }
 
