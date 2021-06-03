@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         
-        /* Menu::factory(50)->create(); */
-        Mesa::factory(24)->create();
+        Menu::factory(50)->create();
+        Mesa::factory(25)->create();
 
     }
 }
