@@ -24,4 +24,4 @@ Route::post('/reserva',[ReservaController::class, 'store'])->name('reservas.stor
 
 Auth::routes();
 
-//Route::get('/home', [HomeController::class, 'index'])->name('home');
+/* Route::get('/home', [HomeController::class, 'index'])->name('home'); */

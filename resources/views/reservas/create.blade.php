@@ -7,6 +7,7 @@
 
 
 <div class="container">
+  
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -32,6 +33,7 @@
                             <div class="col-12">
                               <button  class="btn btn-primary" type="submit">Solicitar</button>
                             </div>
+                            
                           </form>
                     
                 </div>
