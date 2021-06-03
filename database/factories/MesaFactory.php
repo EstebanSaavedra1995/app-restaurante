@@ -22,7 +22,7 @@ class MesaFactory extends Factory
     public function definition()
     {
         return [
-            'capacidad' => $this->faker->randomElement([2,4])
+            'capacidad' => $this->faker->randomElement(['2','4'])
         ];
     }
 }
