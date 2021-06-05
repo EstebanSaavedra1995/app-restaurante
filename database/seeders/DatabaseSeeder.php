@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         
-        //Menu::factory(50)->create();
-        //Mesa::factory(25)->create();
+        Menu::factory(50)->create();
+        Mesa::factory(25)->create();
         $this->turnos();
 
     }
@@ -31,10 +31,10 @@ class DatabaseSeeder extends Seeder
         $turno->save();
 
 
-        $turno1 = new Turno();
-        $turno1->inicio = '19:30:00';
-        $turno1->fin = '21:30:00';
-        $turno1->save();
+        $turno = new Turno();
+        $turno->inicio = '19:30:00';
+        $turno->fin = '21:30:00';
+        $turno->save();
 
         $turno = new Turno();
         $turno->inicio = '20:00:00';

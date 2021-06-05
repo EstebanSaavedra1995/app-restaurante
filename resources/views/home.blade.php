@@ -2,9 +2,13 @@
 
 
 @section('title', 'Home')
+@section('left-menu')
 
+    <li class="nav-item"><a class="nav-link" href="{{ route('reservas.create') }}">Solicitar una reserva</a> </li>
+    <li class="nav-item"><a class="nav-link" href="">Listar menu</a></li>
+@endsection
 @section('content')
-<a href="{{ route('reservas.create') }}">Solicitar una reserva</a>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
