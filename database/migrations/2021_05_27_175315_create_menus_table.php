@@ -18,6 +18,7 @@ class CreateMenusTable extends Migration
             $table->enum('tipo', ['bebida','comida','postre']);
             $table->string('descripcion');
             $table->float('precio');
+            $table->string('imagen');
             $table->timestamps();
         });
     }

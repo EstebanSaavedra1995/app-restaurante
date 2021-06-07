@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ReservaController;
+use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -16,11 +17,14 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+/* create store delete update */
 
 Route::get('/', HomeController::class);
-/* Rutas para la reserva - create store delete update */
+/* Reservas */
 Route::get('/reserva/create',[ReservaController::class, 'create'])->name('reservas.create');
 Route::post('/reserva',[ReservaController::class, 'store'])->name('reservas.store');
+/* Menus */
+Route::get('/menus',[MenuController::class, 'index'])->name('menus.index');
 
 Auth::routes();
 

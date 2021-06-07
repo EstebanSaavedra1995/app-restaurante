@@ -25,6 +25,7 @@ class MenuFactory extends Factory
             'tipo' => $this->faker->randomElement(['bebida','comida','postre']) ,
             'descripcion' => $this->faker->text(50) ,
             'precio' => $this->faker->randomElement([150.90,300.0,1150.90]),
+            'imagen' => 'menus/'. $this->faker->image('public/storage/menus', 320, 240, null, false),
         ];
     }
 }
