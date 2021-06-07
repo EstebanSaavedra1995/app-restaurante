@@ -26,9 +26,10 @@
                       <p class="card-text">Precio ${{$menu->precio}}</p>
                     </div>
                   </div>
-                 
                 @endforeach
-               
+                <span>
+                {{$menus->links()}}
+                </span>
                     
                 </div>
             </div>
