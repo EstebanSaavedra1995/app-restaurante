@@ -25,7 +25,7 @@
                             <div class="col-md-4">
                               {{-- "AAAA-MM-DD" --}}
                               <label for="validationCustom01" class="form-label" >Fecha</label>
-                              <input type="date" min="2021-06-07"  max="2021-06-09" class="form-control" name="fecha"  required>
+                              <input type="date" min="{{$today}}"  max="2021-06-09" class="form-control" name="fecha"  required>
                             </div>
                             
                             <div class="col-12">

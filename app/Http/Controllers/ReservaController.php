@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class ReservaController extends Controller
 {
   public function index()
     {
-        return view('reservas.index');
+      return view('reservas.index');
 
     }
     public function create()
     {
-        return view('reservas.create');
+      $today = Carbon::today();
+      return view('reservas.create',compact('today'));
 
     }
 

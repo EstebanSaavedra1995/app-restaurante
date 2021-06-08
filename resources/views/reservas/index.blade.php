@@ -20,6 +20,7 @@
                         </div>
                     @endif
                   {{--   {{Auth::user()->id }} --}}
+                  {{-- {{$today}} --}}
                 </div>
             </div>
         </div>
