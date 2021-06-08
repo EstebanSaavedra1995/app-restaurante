@@ -25,8 +25,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ __('You are logged in!') }}
+                    Mostrar si tiene una reserva activa
                 </div>
             </div>
         </div>

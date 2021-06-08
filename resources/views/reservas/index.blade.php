@@ -19,9 +19,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <p>{{ session('status') }}</p>
-                    <p>EA</p>
-                    
+                  {{--   {{Auth::user()->id }} --}}
                 </div>
             </div>
         </div>
