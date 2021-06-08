@@ -4,8 +4,12 @@
 @section('title', 'Home')
 @section('left-menu')
 
-    <li class="nav-item"><a class="nav-link {{request()->routeIs('reservas.create')? 'active': ''}}" href="{{ route('reservas.create') }}">Solicitar una reserva</a> </li>
-    <li class="nav-item"><a class="nav-link {{request()->routeIs('menus.index')? 'active': ''}}" href="{{ route('menus.index') }}">Ver los menús</a></li>
+    <li class="nav-item"><a class="nav-link {{request()->routeIs('reservas.create')? 'active': ''}}" 
+    href="{{ route('reservas.create') }}">Solicitar una reserva</a> </li>
+    <li class="nav-item"><a class="nav-link {{request()->routeIs('menus.index')? 'active': ''}}" 
+    href="{{ route('menus.index') }}">Ver los menús</a></li>
+    <li class="nav-item"><a class="nav-link {{request()->routeIs('reservas.index')? 'active': ''}}" 
+        href="{{ route('reservas.index') }}">Ver reservas realizadas</a></li>
 @endsection
 @section('content')
 

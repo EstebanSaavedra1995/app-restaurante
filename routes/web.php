@@ -21,7 +21,8 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', HomeController::class);
 /* Reservas */
-Route::get('/reserva/create',[ReservaController::class, 'create'])->name('reservas.create');
+Route::get('/reservas/create',[ReservaController::class, 'create'])->name('reservas.create');
+Route::get('/reservas',[ReservaController::class, 'index'])->name('reservas.index');
 Route::post('/reserva',[ReservaController::class, 'store'])->name('reservas.store');
 /* Menus */
 Route::get('/menus',[MenuController::class, 'index'])->name('menus.index');
