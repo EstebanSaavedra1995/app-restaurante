@@ -23,13 +23,11 @@
                         <form method="POST" action='{{ route('reservas.store')}}' class="row g-3 needs-validation">
                           @csrf
                             <div class="col-md-4">
-                              <label for="validationCustom01" class="form-label" >Nombre</label>
-                              <input type="text" class="form-control" name="nombre"  required>
+                              {{-- "AAAA-MM-DD" --}}
+                              <label for="validationCustom01" class="form-label" >Fecha</label>
+                              <input type="date" min="2021-06-07"  max="2021-06-09" class="form-control" name="fecha"  required>
                             </div>
-                            <div class="col-md-4">
-                              <label for="validationCustom01" class="form-label" >Apellido</label>
-                              <input type="text" class="form-control" name="apellido" required>
-                            </div>
+                            
                             <div class="col-12">
                               <button  class="btn btn-primary" type="submit">Solicitar</button>
                             </div>
