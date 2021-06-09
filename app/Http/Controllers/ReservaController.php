@@ -14,8 +14,14 @@ class ReservaController extends Controller
     }
     public function create()
     {
-      $today = Carbon::today();
-      return view('reservas.create',compact('today'));
+      $dt = Carbon::now()->timezone('America/Argentina/Ushuaia');
+      $today = $dt->format('Y-m-d');
+      $tomorrow = $dt->addDays(2)->format('Y-m-d');
+     
+
+      
+  
+      return view('reservas.create',compact(['today','tomorrow']));
 
     }
 
