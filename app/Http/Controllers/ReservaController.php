@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Models\Turno;
 
 class ReservaController extends Controller
 {
@@ -17,10 +18,6 @@ class ReservaController extends Controller
       $dt = Carbon::now()->timezone('America/Argentina/Ushuaia');
       $today = $dt->format('Y-m-d');
       $tomorrow = $dt->addDays(2)->format('Y-m-d');
-     
-
-      
-  
       return view('reservas.create',compact(['today','tomorrow']));
 
     }
@@ -28,5 +25,11 @@ class ReservaController extends Controller
     public function store(Request $request)
     {
       return $request->all();
+    }
+
+    public function ajax()
+    {
+      $horarios= Turno::select('inicio')->get();
+      return json_encode($horarios);
     }
 }

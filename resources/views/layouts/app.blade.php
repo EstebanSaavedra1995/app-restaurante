@@ -83,5 +83,6 @@
             @yield('content')
         </main>
     </div>
+    <script src="{{ asset('/js/ajax/reserva.js')}}" type="text/javascript"></script>
 </body>
 </html>

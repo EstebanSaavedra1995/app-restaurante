@@ -25,14 +25,24 @@
                             <div class="col-md-4">
                               {{-- "AAAA-MM-DD" --}}
                               <label for="validationCustom01" class="form-label" >Fecha</label>
-                              <input type="date" min="{{$today}}" max="{{$tomorrow}}"  class="form-control" name="fecha"  required>
+                              <input type="date" min="{{$today}}" max="{{$tomorrow}}"  
+                              class="form-control" id="fecha" name="fecha"  required>
+                            </div>
+
+                            <div class="col-12">
+                              <select class="form-select" aria-label="Default select example">
+                                <option selected>Seleccione hora</option>
+                                <option value="1">One</option>
+                              </select>
                             </div>
                             
                             <div class="col-12">
                               <button  class="btn btn-primary" type="submit">Solicitar</button>
                             </div>
-                            
+                          
                           </form>
+                          <div id="contenedor">
+                          </div>
                     
                 </div>
             </div>
@@ -40,3 +50,4 @@
     </div>
 </div>
 @endsection
+{{-- <script src="{{ asset('/js/ajax/reserva.js')}}" type="text/javascript"></script> --}}
