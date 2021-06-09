@@ -29,7 +29,13 @@ class ReservaController extends Controller
 
     public function ajax()
     {
-      $horarios= Turno::select('inicio')->get();
-      return ($horarios);
+      if(request()->getMethod()=='POST'){
+        $fecha= request('fecha');
+        return json_encode($fecha);
+        
+      }
+     
     }
+    /*  $horarios= Turno::select('inicio')->get();
+      return ($horarios); */
 }

@@ -20,11 +20,14 @@
                         </div>
                     @endif
                         
-                        <form method="POST" action='{{ route('reservas.store')}}' class="row g-3 needs-validation">
+                        <form id="form" method="POST" action='{{ route('reservas.store')}}' class="row g-3 needs-validation">
                           @csrf
+                          <div class="col-12">
+                            <input  class="form-control" name="msj" value="msj desde formulario">
+                          </div>
                             <div class="col-md-4">
                               {{-- "AAAA-MM-DD" --}}
-                              <label for="validationCustom01" class="form-label" >Fecha</label>
+                              <label for="validationCustom01" class="form-label">Fecha</label>
                               <input type="date" min="{{$today}}" max="{{$tomorrow}}"  
                               class="form-control" id="fecha" name="fecha"  required>
                             </div>
@@ -42,6 +45,7 @@
                             <div class="col-12">
                               <button  class="btn btn-primary" type="submit">Solicitar</button>
                             </div>
+
                           
                           </form>
                           <div id="contenedor">

@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', HomeController::class);
 /* Reservas */
 Route::get('/reservas/create',[ReservaController::class, 'create'])->name('reservas.create');
-Route::get('/reserva/create/date',[ReservaController::class, 'ajax'])->name('reservas.ajax');
+Route::post('/reserva/create/date',[ReservaController::class, 'ajax'])->name('reservas.ajax');
 Route::get('/reservas',[ReservaController::class, 'index'])->name('reservas.index');
 Route::post('/reserva',[ReservaController::class, 'store'])->name('reservas.store');
 
