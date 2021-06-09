@@ -12,7 +12,13 @@ function mostrar(e) {
         if (xhr.readyState === 4 && xhr.status === 200) {
             let contenedor = document.getElementById('contenedor');
             let respuesta = xhr.responseText;
-            contenedor.innerHTML = respuesta;
+            var rta = " ";
+            for( let x of respuesta){
+               rta += '<option value="1">' + x.inicio +'</option>'
+
+            }
+            console.log(rta);
+            contenedor.innerHTML = rta;
         
         }
     }
