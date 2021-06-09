@@ -30,6 +30,6 @@ class ReservaController extends Controller
     public function ajax()
     {
       $horarios= Turno::select('inicio')->get();
-      return json_encode($horarios);
+      return ($horarios);
     }
 }
