@@ -22,9 +22,6 @@
                         
                         <form id="form" method="POST" action='{{ route('reservas.store')}}' class="row g-3 needs-validation">
                           @csrf
-                          <div class="col-12">
-                            <input  class="form-control" name="msj" value="msj desde formulario">
-                          </div>
                             <div class="col-md-4">
                               {{-- "AAAA-MM-DD" --}}
                               <label for="validationCustom01" class="form-label">Fecha</label>
@@ -32,29 +29,21 @@
                               class="form-control" id="fecha" name="fecha"  required>
                             </div>
 
-                            <div class="col-12">
-                              <select class="form-select" aria-label="Default select example">
-                                <option selected>Seleccione hora</option>
-                                
-                                <option value="1"> </option>
-                                <div id="contenedor">
-                                </div>
-                              </select>
+                            <div id="contenedor" class="col-12">
+                            {{-- <select class="form-select" aria-label="Default select example">
+                              <option value="">ea</option>
+                              <option value="">ea</option>
+                            </select> --}}
                             </div>
-                            
                             <div class="col-12">
                               <button  class="btn btn-primary" type="submit">Solicitar</button>
                             </div>
 
                           
-                          </form>
-                          <div id="contenedor">
-                          </div>
-                    
+                          </form> 
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
-{{-- <script src="{{ asset('/js/ajax/reserva.js')}}" type="text/javascript"></script> --}}

@@ -25,16 +25,20 @@ function mostrar(e) {
 } */
 
 document.getElementById('fecha').addEventListener('change', function (e) {
-    e.preventDefault();
-    const datos = new FormData(document.getElementById('form'))
+    e.preventDefault(); //para evitar que se recargue la pagina
+    const datos = new FormData(document.getElementById('form'));
     fetch('/reserva/create/date', {
-        method: 'POST',
+        method: 'POST', 
         body: datos,
     })
         .then(res => res.json())
         .then(data => {
             let contenedor = document.getElementById('contenedor');
-            contenedor.innerHTML = data;
-
+            let combo = `<select class="form-select" aria-label="Default select example">`;
+            data.map(m => {
+                combo += `<option value="${m.id}">${m.inicio}</option>`
+            })
+            combo+=`</select>`
+            contenedor.innerHTML = combo;
         })
 }, true)
