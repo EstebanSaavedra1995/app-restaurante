@@ -3,7 +3,6 @@
 
 @section('title', 'Home')
 @section('left-menu')
-
     <li class="nav-item"><a class="nav-link {{request()->routeIs('reservas.create')? 'active': ''}}" 
     href="{{ route('reservas.create') }}">Solicitar una reserva</a> </li>
     <li class="nav-item"><a class="nav-link {{request()->routeIs('menus.index')? 'active': ''}}" 
@@ -17,7 +16,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">@yield('subtitle','Bienvenido')
+                    @yield('search')   
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -25,7 +26,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    Mostrar si tiene una reserva activa
+                    @yield('contenido')
                 </div>
             </div>
         </div>

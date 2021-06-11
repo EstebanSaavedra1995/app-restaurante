@@ -9,7 +9,7 @@ class MenuController extends Controller
 {
     
     public function index(){
-        $menus= Menu::paginate(2);
+        $menus= Menu::paginate(4);
         //return view('reservas', compact('nombre'));
         return view('menus.index', compact('menus'));
     }

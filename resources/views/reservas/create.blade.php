@@ -1,49 +1,31 @@
 @extends('home')
-@section('title','Nueva Reserva')
-    
+@section('title', 'Nueva Reserva')
+@section('subtitle', 'Reservas')
+@section('contenido')
 
 
-@section('content')
-
-
-<div class="container">
-  
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                        
-                        <form id="form" method="POST" action='{{ route('reservas.store')}}' class="row g-3 needs-validation">
-                          @csrf
-                            <div class="col-md-4">
-                              {{-- "AAAA-MM-DD" --}}
-                              <label for="validationCustom01" class="form-label">Fecha</label>
-                              <input type="date" min="{{$today}}" max="{{$tomorrow}}"  
-                              class="form-control" id="fecha" name="fecha"  required>
-                            </div>
-
-                            <div id="contenedor" class="col-12">
-                            {{-- <select class="form-select" aria-label="Default select example">
-                              <option value="">ea</option>
-                              <option value="">ea</option>
-                            </select> --}}
-                            </div>
-                            <div class="col-12">
-                              <button  class="btn btn-primary" type="submit">Solicitar</button>
-                            </div>
-
-                          
-                          </form> 
-                </div>
+    <div>
+        <form id="form" method="POST" action="{{ route('reservas.store') }}">
+            @csrf
+            <div class="mb-3">
+                <label for="personas" class="form-label">Seleccione la cantidad de personas</label>
+                <select class="form-control" id="personas" name="personas">
+                    <option value="1">1</option>
+                    <option value="2" selected>2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
             </div>
-        </div>
+            <div class="mb-3">
+                <label for="fecha" class="form-label">Seleccione la fecha</label>
+                <input type="date" min="{{ $today }}" max="{{ $tomorrow }}" class="form-control" id="fecha"
+                    name="fecha" required>
+            </div>
+            <div class="mb-3" id="contenedor">
+            </div>
+            <button type="submit" class="btn btn-primary form-control">Solicitar</button>
+        </form>
     </div>
-</div>
+
+
 @endsection

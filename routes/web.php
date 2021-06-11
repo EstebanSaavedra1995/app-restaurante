@@ -19,17 +19,16 @@ use Illuminate\Support\Facades\Auth;
 
 /* create store delete update */
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 /* Reservas */
 Route::get('/reservas/create',[ReservaController::class, 'create'])->name('reservas.create');
-Route::post('/reserva/create/date',[ReservaController::class, 'ajax'])->name('reservas.ajax');
+Route::post('/reserva/create/date',[ReservaController::class, 'cargarHoras'])->name('reservas.cargarHoras');
 Route::get('/reservas',[ReservaController::class, 'index'])->name('reservas.index');
 Route::post('/reserva',[ReservaController::class, 'store'])->name('reservas.store');
 
 
 /* Menus */
 Route::get('/menus',[MenuController::class, 'index'])->name('menus.index');
-
 Auth::routes();
 
 /* Route::get('/home', [HomeController::class, 'index'])->name('home'); */

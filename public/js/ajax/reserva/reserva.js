@@ -34,7 +34,8 @@ document.getElementById('fecha').addEventListener('change', function (e) {
         .then(res => res.json())
         .then(data => {
             let contenedor = document.getElementById('contenedor');
-            let combo = `<select class="form-select" aria-label="Default select example">`;
+            let combo = `<label for="hora" class="form-label">Seleccione la hora</label>`;
+            combo += `<select class="form-control" id="hora">`;
             data.map(m => {
                 combo += `<option value="${m.id}">${m.inicio}</option>`
             })

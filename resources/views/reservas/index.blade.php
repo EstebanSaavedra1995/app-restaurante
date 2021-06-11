@@ -1,29 +1,15 @@
 @extends('home')
-@section('title','Reservas realizadas')
-    
+@section('title', 'Reservas realizadas')
 
 
-@section('content')
+@section('subtitle', 'Reservas')
+@section('search')
+<input class="float-right" type="text" placeholder="Buscar">    
+@endsection
+@section('contenido')
 
 
-<div class="container">
-  
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                  {{--   {{Auth::user()->id }} --}}
-                  {{-- {{$today}} --}}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    <div>
+      
+      </div>
 @endsection
