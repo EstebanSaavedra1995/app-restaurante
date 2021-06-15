@@ -8,7 +8,6 @@ use App\Models\Encuesta;
 use App\Models\Mesa;
 use App\Models\User;
 use App\Models\Menu;
-use App\Models\Turno;
 class Reserva extends Model
 {
     use HasFactory;

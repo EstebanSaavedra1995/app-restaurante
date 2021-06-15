@@ -20,9 +20,8 @@ class CreateReservasTable extends Migration
                  ->default('pendiente');
 
             $table->time('hora');
-            
-
             $table->date('fecha');
+            $table->timestamps();
             /* relacion uno a muchos con mesas */
             $table->unsignedBigInteger('mesa_id');
             $table->foreign('mesa_id')->references('id')->on('mesas');

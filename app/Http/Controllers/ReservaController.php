@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Reserva;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use App\Models\Turno;
 
 class ReservaController extends Controller
 {
@@ -33,11 +32,9 @@ class ReservaController extends Controller
     public function cargarHoras()
     {
       if(request()->getMethod()=='POST'){
-        $horarios= Turno::select('inicio','id')->get();
-        return response()->json($horarios);
+        return response()->json();
         /* $fecha= request('fecha');
         Reserva::where('fecha',$fecha); */
-        
         
       }
     }
