@@ -33,8 +33,8 @@ class ReservaController extends Controller
     public function cargarHoras()
     {
       if(request()->getMethod()=='POST'){
-        /* $horarios= Turno::select('inicio','id')->get();
-        return json_encode($horarios); */
+        $horarios= Turno::select('inicio','id')->get();
+        return response()->json($horarios);
         /* $fecha= request('fecha');
         Reserva::where('fecha',$fecha); */
         
