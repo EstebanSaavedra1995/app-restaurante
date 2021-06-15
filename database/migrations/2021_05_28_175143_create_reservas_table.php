@@ -18,6 +18,8 @@ class CreateReservasTable extends Migration
             $table->float('total');
             $table->enum('estado', ['pendiente','confirmada','cancelada','perdida'])
                  ->default('pendiente');
+
+            $table->time('hora');
             
 
             $table->date('fecha');
@@ -29,10 +31,7 @@ class CreateReservasTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
-            /* relacion uno a muchos con turnos */
-            $table->unsignedBigInteger('turno_id');
-            $table->foreign('turno_id')->references('id')->on('turnos');
-            $table->timestamps();
+           
             
         });
     }

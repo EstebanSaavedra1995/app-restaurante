@@ -37,9 +37,6 @@ class Reserva extends Model
         return $this->belongsToMany(Menu::class);
     }
 
-    /* relacion uno a muchos de estado con turno (inversa) */
-    public function Turno(){
-    return $this->belongsTo(Turno::class);
-    }
+    
 
 }
