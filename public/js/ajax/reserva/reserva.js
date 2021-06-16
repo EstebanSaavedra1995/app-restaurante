@@ -24,7 +24,7 @@ function mostrar(e) {
     }
 } */
 
-document.getElementById('fecha').addEventListener('change', function (e) {
+/* document.getElementById('fecha').addEventListener('change', function (e) {
     e.preventDefault(); //para evitar que se recargue la pagina
     const datos = new FormData(document.getElementById('form'));
     fetch('/reserva/create/date', {
@@ -37,9 +37,9 @@ document.getElementById('fecha').addEventListener('change', function (e) {
             let combo = `<label for="hora" class="form-label">Seleccione la hora</label>`;
             combo += `<select class="form-control" id="hora">`;
             data.map(m => {
-                combo += `<option value="${m.id}">${m.inicio}</option>`
+                combo += `<option value="${m.id}">${m.hora}</option>`
             })
             combo+=`</select>`
             contenedor.innerHTML = combo;
         })
-}, true)
+}, true) */

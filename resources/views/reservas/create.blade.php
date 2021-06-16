@@ -22,6 +22,12 @@
                     name="fecha" required>
             </div>
             <div class="mb-3" id="contenedor">
+                <label for="hora" class="form-label">Seleccione la hora</label>
+                <select class="form-control" id="hora">
+                    @foreach($horaActual as $hora)
+                    <option> {{$hora}} </option>
+                    @endforeach
+                </select>
             </div>
             <button type="submit" class="btn btn-primary form-control">Solicitar</button>
         </form>

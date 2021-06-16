@@ -18,7 +18,8 @@ class ReservaController extends Controller
       $date = Carbon::now()->timezone('America/Argentina/Ushuaia');
       $today = $date->format('Y-m-d');
       $tomorrow = $date->addDays(2)->format('Y-m-d');
-      return view('reservas.create',compact(['today','tomorrow']));
+      $horaActual= $this->cargarHoras();
+      return view('reservas.create',compact(['today','tomorrow','horaActual']));
 
     }
 
@@ -27,16 +28,34 @@ class ReservaController extends Controller
         $fecha= $request->fecha;
         $reservas= Reserva::where('fecha',$fecha)->get();
         return $reservas;
+        
     }
 
-    public function cargarHoras()
+    public function cargarHoras(){
+      $h =  new Carbon('19:00:00');
+      //$hora =$h->format('H:i:s');
+  
+     
+    
+ 
+      $horas[] = $h;
+      
+
+      for ($i=1; $i < 15 ; $i++) { 
+        $horas[] = $h->addMinutes(30);
+      } 
+      return $horas;
+    }
+
+/*     public function cargarHoras()
     {
       if(request()->getMethod()=='POST'){
-        return response()->json();
-        /* $fecha= request('fecha');
-        Reserva::where('fecha',$fecha); */
+      
+        return  response()->json();
+        $fecha= request('fecha');
+        Reserva::where('fecha',$fecha); 
         
       }
-    }
+    } */
      
 }
