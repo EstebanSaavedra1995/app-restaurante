@@ -22,9 +22,27 @@ class ReservaController extends Controller
 
   public function store(Request $request)
   {
-    /* $fecha = $request->fecha;
-    $reservas = Reserva::where('fecha', $fecha)->get(); */
-    return $request->all();
+/*     
+    return $request->all(); */
+    //"personas":"2","fecha":"2021-06-16","hora":"19:00:00"
+    $fecha = $request->fecha;
+    $hora =  new Carbon($request->hora);
+    $hAntes = $hora->subMinutes(120)->toTimeString();
+    $hDespues =  $hora->addMinutes(240)->toTimeString();
+    $reservas = Reserva::where('fecha', $fecha)
+    ->where('hora','<',$hDespues)
+    ->where('hora','>',$hAntes)->get(); 
+
+    $reserva = new Reserva();
+    $reserva->total = 0;
+    $reserva->hora = $request->hora;
+    $reserva->fecha = $request->fecha;
+    $reserva->mesa_id = 3;
+    $reserva->user_id = 1;
+    $reserva->save();
+    return $reservas;
+
+   
   }
 
   public function filtrarHorasHoy()
@@ -34,7 +52,7 @@ class ReservaController extends Controller
     $horas = $this->cargarHoras();
     $horasFiltradas = array();
     foreach ($horas as $hora) {
-      if ($hora > $horaActual) {
+      if ($hora > $horaActual || $hora < '19:00:00') {
         array_push($horasFiltradas, $hora);
       }
     }

@@ -35,11 +35,12 @@ document.getElementById('fecha').addEventListener('change', function (e) {
         .then(data => {
             let contenedor = document.getElementById('contenedor');
             let combo = `<label for="hora" class="form-label">Seleccione la hora</label>`;
-            combo += `<select class="form-control" id="hora">`;
+            combo += `<select class="form-control" id="hora" name="hora">`;
             data.map(hora => {
                 combo += `<option value="${hora}">${hora}</option>`
             })
             combo+=`</select>`
+           
             contenedor.innerHTML = combo;
         })
 }, true)
