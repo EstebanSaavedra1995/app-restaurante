@@ -9,53 +9,62 @@ use Illuminate\Support\Carbon;
 class ReservaController extends Controller
 {
   public function index()
-    {
-      return view('reservas.index');
+  {
+    return view('reservas.index');
+  }
+  public function create()
+  {
+    $date = Carbon::now()->timezone('America/Argentina/Ushuaia');
+    $today = $date->format('Y-m-d');
+    $tomorrow = $date->addDays(2)->format('Y-m-d');
+    return view('reservas.create', compact(['today', 'tomorrow']));
+  }
 
-    }
-    public function create()
-    {
-      $date = Carbon::now()->timezone('America/Argentina/Ushuaia');
-      $today = $date->format('Y-m-d');
-      $tomorrow = $date->addDays(2)->format('Y-m-d');
-      $horaActual= $this->cargarHoras();
-      return view('reservas.create',compact(['today','tomorrow','horaActual']));
+  public function store(Request $request)
+  {
+    /* $fecha = $request->fecha;
+    $reservas = Reserva::where('fecha', $fecha)->get(); */
+    return $request->all();
+  }
 
-    }
-
-    public function store(Request $request)
-    {
-        $fecha= $request->fecha;
-        $reservas= Reserva::where('fecha',$fecha)->get();
-        return $reservas;
-        
-    }
-
-    public function cargarHoras(){
-      $h =  new Carbon('19:00:00');
-      //$hora =$h->format('H:i:s');
-  
-     
-    
- 
-      $horas[] = $h;
-      
-
-      for ($i=1; $i < 15 ; $i++) { 
-        $horas[] = $h->addMinutes(30);
-      } 
-      return $horas;
-    }
-
-/*     public function cargarHoras()
-    {
-      if(request()->getMethod()=='POST'){
-      
-        return  response()->json();
-        $fecha= request('fecha');
-        Reserva::where('fecha',$fecha); 
-        
+  public function filtrarHorasHoy()
+  {
+    $date = Carbon::now()->timezone('America/Argentina/Ushuaia');
+    $horaActual = $date->format('H:i:s');
+    $horas = $this->cargarHoras();
+    $horasFiltradas = array();
+    foreach ($horas as $hora) {
+      if ($hora > $horaActual) {
+        array_push($horasFiltradas, $hora);
       }
-    } */
-     
+    }
+    return $horasFiltradas;
+  }
+  public function cargarHoras()
+  {
+    $hora =  new Carbon('19:00:00');
+    //$hora =$h->format('H:i:s')
+    $horas = array();
+    array_push($horas, $hora->toTimeString());
+    for ($i = 0; $i < 14; $i++) {
+      $hora = $hora->addMinutes(30);
+      array_push($horas, $hora->toTimeString());
+    }
+    return $horas;
+  }
+
+  public function horasAsincronas()
+  {
+    $date = Carbon::now()->timezone('America/Argentina/Ushuaia');
+    $today = $date->format('Y-m-d');
+    if (request()->getMethod() == 'POST') {
+      $fecha = request('fecha');
+      if ($fecha == $today) {
+        return  response()->json($this->filtrarHorasHoy());
+        
+      } else {
+        return  response()->json($this->cargarHoras());
+      }
+    }
+  }
 }
