@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mesa;
 use App\Models\Reserva;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use PhpParser\Node\Stmt\Foreach_;
 
 class ReservaController extends Controller
 {
@@ -31,19 +33,55 @@ class ReservaController extends Controller
     $hDespues =  $hora->addMinutes(240)->toTimeString();
     $reservas = Reserva::where('fecha', $fecha)
     ->where('hora','<',$hDespues)
-    ->where('hora','>',$hAntes)->get(); 
+    ->where('hora','>',$hAntes)
+    ->where('estado','pendiente')->get(); 
+     $mesas = Mesa::all();
+    
+  
 
-    $reserva = new Reserva();
+     if(count($reservas) < count($mesas))
+     {
+      return $this->mesasDesocupadas($mesas, $this->mesasOcupadas($reservas));
+     }else{
+       return "mal";
+     }
+
+
+     /* foreach ($reservas as $key => $value) {
+       if(in_array("Irix, $os) ){}
+     } */
+
+    /* $reserva = new Reserva();
     $reserva->total = 0;
     $reserva->hora = $request->hora;
     $reserva->fecha = $request->fecha;
     $reserva->mesa_id = 3;
     $reserva->user_id = 1;
     $reserva->save();
-    return $reservas;
+     */
+
 
    
   }
+
+  public function mesasOcupadas($reservas){
+    $mesas = array();
+    foreach ($reservas as  $reserva) {
+      array_push($mesas,$reserva->mesa_id);
+    }
+    return array_unique($mesas);
+  }
+
+  public function mesasDesocupadas($mesas,$mesasOc){
+    $mesasDes = array();
+    foreach ($mesas as  $mesa) {
+      if( !(in_array($mesa->id, $mesasOc))){
+        array_push($mesasDes,$mesa);
+      } 
+    }
+    return $mesasDes;
+  }
+
 
   public function filtrarHorasHoy()
   {
