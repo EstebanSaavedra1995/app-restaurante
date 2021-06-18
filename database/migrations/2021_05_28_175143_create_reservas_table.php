@@ -19,7 +19,7 @@ class CreateReservasTable extends Migration
             $table->enum('estado', ['pendiente','confirmada','cancelada','perdida'])
                  ->default('pendiente');
 
-            $table->time('hora');
+            $table->dateTime('hora');
             $table->date('fecha');
             $table->timestamps();
             /* relacion uno a muchos con mesas */

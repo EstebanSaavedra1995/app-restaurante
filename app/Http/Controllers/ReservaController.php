@@ -24,60 +24,59 @@ class ReservaController extends Controller
 
   public function store(Request $request)
   {
-/*     
-    return $request->all(); */
-    //"personas":"2","fecha":"2021-06-16","hora":"19:00:00"
+
     $fecha = $request->fecha;
-    $hora =  new Carbon($request->hora);
+    $horaSolicitada = $request->hora;
+    /* $hora =  new Carbon($request->hora); */
+    /* 2021-06-18 01:58:49 */
+
+    $timestamp = strtotime($fecha . " " . $horaSolicitada);
+    $hora = Carbon::createFromTimestamp($timestamp);
+    if ($horaSolicitada < '19:00:00') {
+      $hora->addDay(1);
+    }
+
     $hAntes = $hora->subMinutes(120)->toTimeString();
     $hDespues =  $hora->addMinutes(240)->toTimeString();
     $reservas = Reserva::where('fecha', $fecha)
-    ->where('hora','<',$hDespues)
-    ->where('hora','>',$hAntes)
-    ->where('estado','pendiente')->get(); 
-     $mesas = Mesa::all();
-    
-  
+      ->where('hora', '<', $hDespues)
+      ->where('hora', '>', $hAntes)
+      ->where('estado', 'pendiente')->get();
+    $mesas = Mesa::all();
 
-     if(count($reservas) < count($mesas))
-     {
+
+    if (count($reservas) < count($mesas)) {
       return $this->mesasDesocupadas($mesas, $this->mesasOcupadas($reservas));
-     }else{
-       return "mal";
-     }
+      return $reservas;
+    } else {
+      return "mal";
+    }
 
-
-     /* foreach ($reservas as $key => $value) {
-       if(in_array("Irix, $os) ){}
-     } */
-
-    /* $reserva = new Reserva();
+    $reserva = new Reserva();
     $reserva->total = 0;
-    $reserva->hora = $request->hora;
+    $reserva->hora = $hora->toDateTimeString();
     $reserva->fecha = $request->fecha;
     $reserva->mesa_id = 3;
     $reserva->user_id = 1;
     $reserva->save();
-     */
-
-
-   
   }
 
-  public function mesasOcupadas($reservas){
+  public function mesasOcupadas($reservas)
+  {
     $mesas = array();
     foreach ($reservas as  $reserva) {
-      array_push($mesas,$reserva->mesa_id);
+      array_push($mesas, $reserva->mesa_id);
     }
     return array_unique($mesas);
   }
 
-  public function mesasDesocupadas($mesas,$mesasOc){
+  public function mesasDesocupadas($mesas, $mesasOc)
+  {
     $mesasDes = array();
     foreach ($mesas as  $mesa) {
-      if( !(in_array($mesa->id, $mesasOc))){
-        array_push($mesasDes,$mesa);
-      } 
+      if (!(in_array($mesa->id, $mesasOc))) {
+        array_push($mesasDes, $mesa);
+      }
     }
     return $mesasDes;
   }
@@ -117,7 +116,6 @@ class ReservaController extends Controller
       $fecha = request('fecha');
       if ($fecha == $today) {
         return  response()->json($this->filtrarHorasHoy());
-        
       } else {
         return  response()->json($this->cargarHoras());
       }
